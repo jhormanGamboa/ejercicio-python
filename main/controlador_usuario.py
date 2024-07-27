@@ -1,37 +1,49 @@
+from vista_formulario import VistaFormulario
 from modelo import modelo_e
-from vista_formulario import vistaformulario
-class controlador_formulario:
-    def __init__(self,obmodelo,objvista) :
-        self.objmodelo=obmodelo
-        self.obvista=objvista
+class Controlador:
+    def __init__(self, objvista, objmodelo):
+        self.vista = objvista
+        self.modelo = objmodelo
 
-    def enviardatos(self):
-        nombre = self.obvista.entry_nombre.get()
-        apellido = self.obvista.entry_apellido.get()
-        edad = self.obvista.entry_edad.get()
-        correo = self.obvista.entry_correo.get()
-        genero = self.obvista.entry_genero.get()
+        
+        objvista.boton.config(command=self.enviar_datos)
 
-        datos = {
-            "nombre": nombre,
-            "apellido": apellido,
-            "edad": edad,
-            "correo": correo,
-            "genero": genero
-        }
+    def enviar_datos(self):
+        datos = objvista.obtener_datos()
 
-        self.objmodelo.escribir_json("datos.json", datos)
-        self.obvista.lab_resultado.config(text="Datos enviados correctamente.")
+        # aco estoy validadndo la eda de que sea un numero entero
+        if not self.validar_edad(datos["edad"]):
+            objvista.actualizar_resultado("Error: La edad debe ser un número entero.", "red")
+            return
+        
+        
+        # aca estoy actualizando los datos
+        objmodelo.set_nombre(datos["nombre"])
+        objmodelo.set_apellido(datos["apellido"])
+        objmodelo.set_edad(datos["edad"])
+        objmodelo.set_correo(datos["correo"])
+        objmodelo.set_genero(datos["genero"])
+        
+        # aqui guardo los datos que envio
+        objmodelo.archvonuevo(datos)
+        objvista.actualizar_resultado("Datos enviados correctamente.", "green")
+
+    def validar_edad(self, edad_texto):
+        try:
+            int(edad_texto)
+            return True
+        except ValueError:
+            return False
+        
+        
 
 
-obmodelo=modelo_e
-obvista=vistaformulario()
-obcontrolador=controlador_formulario(obmodelo,obvista)
-obcontrolador.enviardatos()
-obvista.crear_boton()
-
-
-obvista.incion()
-
-
+objvista = VistaFormulario()
+objvista.crear_ventana()
+objvista.crear_boton()
     
+objmodelo = modelo_e ()
+objcontrolador = Controlador(objvista,objmodelo)
+    
+objvista.iniciar()
+
