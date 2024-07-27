@@ -46,3 +46,7 @@ class modelo_e:
     def  cadena(self):
        with open("archivo.txt","w") as archivo:
           archivo.close
+
+    def archvonuevo(self, datos):
+        with open("archivo.txt", "w") as archivo:
+            json.dump(datos, archivo)       
