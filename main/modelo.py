@@ -22,4 +22,3 @@ class modelo_e:
     def archvonuevo(self,datos):
        with open("archivo.txt", "w") as archivo:
           json.dump(datos,archivo)
-          archivo.close()
