@@ -31,7 +31,7 @@ obcontrolador.enviardatos()
 obvista.crear_boton()
 
 
-obvista.iniciar()
+obvista.incion()
 
 
     

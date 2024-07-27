@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 
-class vista_formulario:
+class vistaformulario:
     def __init__(self):
         self.ventana = None
 
@@ -53,10 +53,7 @@ class vista_formulario:
         except ValueError:
             self.label_resultado.config(text="Error la edad debe de ser un numero entero.", bg="red") 
 
-    def iniciar(self):
-        self.ventana.mainloop()
+    def incion(self):
+        self.ventana.mainloop()        
 
-objvista = vista_formulario()
-objvista.crear_ventana()
-objvista.crear_boton()
-objvista.iniciar()
+   
