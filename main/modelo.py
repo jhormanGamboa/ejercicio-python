@@ -1,7 +1,41 @@
 import json
 class modelo_e:
     def __init__(self):
-        pass
+        self.nombre = None
+        self.apellido = None
+        self.edad = None
+        self.correo = None
+        self.genero = None
+
+    def get_nombre(self):
+       return self.nombre
+    
+    def get_apellido(self):
+       return self.apellido
+    
+    def get_edad(self):
+       return self.edad
+    
+    def get_correo(self):
+       return self.correo
+    
+    def get_genero(self):
+       return self.genero
+    
+    def set_nombre(self,datonombre):
+       self.nombre = datonombre
+
+    def set_apellido(self,datoapellido):
+       self.apellido = datoapellido
+   
+    def set_edad(self,datoedad):
+       self.edad = datoedad
+      
+    def set_correo(self,datocorreo):
+       self.correo = datocorreo
+
+    def set_genero(self,datogenero):
+       self.genero = datogenero
 
     def procesojson(self):
       with open("archivo.txt","r") as archivo:
@@ -12,13 +46,3 @@ class modelo_e:
     def  cadena(self):
        with open("archivo.txt","w") as archivo:
           archivo.close
-       
-    def archivocrear(self):
-       with open("sasas","w")as archivotexto:
-          archivotexto.write()
-          mensaje="Docemento creado"
-          archivotexto.close()
-          return mensaje
-    def archvonuevo(self,datos):
-       with open("archivo.txt", "w") as archivo:
-          json.dump(datos,archivo)
