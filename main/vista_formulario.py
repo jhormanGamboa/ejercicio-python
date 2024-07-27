@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import messagebox
 
 class vista_formulario:
     def __init__(self):
@@ -43,6 +44,14 @@ class vista_formulario:
         self.boton.pack(pady=10)
         self.label_resultado = tk.Label(self.contenedor, text="", bg="#bbffd5")
         self.label_resultado.pack(pady=10)
+    
+    def validar_edad(self):
+        edad_texto = self.entry_edad.get()
+        try:
+            edad = int(edad_texto)
+            self.label_resultado.config(text="Datos enviado correctamente.", fg="green")
+        except ValueError:
+            self.label_resultado.config(text="Error la edad debe de ser un numero entero.", bg="red") 
 
     def iniciar(self):
         self.ventana.mainloop()
