@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
-import json
+
 
 class VistaFormulario:
     def __init__(self):
@@ -42,27 +42,23 @@ class VistaFormulario:
 
     def crear_boton(self):
         self.boton = tk.Button(self.contenedor, text="Enviar datos")
-        self.boton.pack(pady=10)
-        self.label_resultado = tk.Label(self.contenedor, text="", bg="#DFEDF6")
-        self.label_resultado.pack(pady=10)
+        self.boton.pack()
 
     def mostrar_mensaje(self, mensaje, tipo="info"):
-        if tipo == "info":
-            tk.messagebox.showinfo("Información", mensaje)
-        elif tipo == "error":
-            tk.messagebox.showerror("Error", mensaje)
+       if tipo == "info": 
+            messagebox.showinfo("Información", f"{mensaje}")
+       elif tipo == "error":
+           messagebox.showerror("Error", f"{mensaje}")
+
 
     def obtener_datos(self):
         return {
-            "nombre": self.entry_nombre.get(),
-            "apellido": self.entry_apellido.get(),
-            "edad": self.entry_edad.get(),
-            "correo": self.entry_correo.get(),
-            "genero": self.entry_genero.get()
+            "Nombre": self.entry_nombre.get(),
+            "Apellido": self.entry_apellido.get(),
+            "Edad": self.entry_edad.get(),
+            "Correo electronico": self.entry_correo.get(),
+            "Genero": self.entry_genero.get()
         }
-
-    def actualizar_resultado(self, mensaje, color="black"):
-        self.label_resultado.config(text=mensaje, fg=color)
 
     def iniciar(self):
         self.ventana.mainloop()

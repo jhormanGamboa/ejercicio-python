@@ -5,28 +5,24 @@ class Controlador:
         self.vista = objvista
         self.modelo = objmodelo
 
-        
-        objvista.boton.config(command=self.enviar_datos)
-
     def enviar_datos(self):
         datos = objvista.obtener_datos()
 
         # aco estoy validadndo la eda de que sea un numero entero
-        if not self.validar_edad(datos["edad"]):
-            objvista.actualizar_resultado("Error: La edad debe ser un número entero.", "red")
+        if not self.validar_edad(datos["Edad"]):
+            objvista.mostrar_mensaje("Error" " " "Rellena los campos correctamente")
             return
         
-        
         # aca estoy actualizando los datos
-        objmodelo.set_nombre(datos["nombre"])
-        objmodelo.set_apellido(datos["apellido"])
-        objmodelo.set_edad(datos["edad"])
-        objmodelo.set_correo(datos["correo"])
-        objmodelo.set_genero(datos["genero"])
+        objmodelo.set_nombre(datos["Nombre"])
+        objmodelo.set_apellido(datos["Apellido"])
+        objmodelo.set_edad(datos["Edad"])
+        objmodelo.set_correo(datos["Correo electronico"])
+        objmodelo.set_genero(datos["Genero"])
         
         # aqui guardo los datos que envio
         objmodelo.archvonuevo(datos)
-        objvista.actualizar_resultado("Datos enviados correctamente.", "green")
+        objvista.mostrar_mensaje("Informacion" " ""Datos enviados correctamente")
 
     def validar_edad(self, edad_texto):
         try:
@@ -37,13 +33,10 @@ class Controlador:
         
         
 
-
 objvista = VistaFormulario()
 objvista.crear_ventana()
-objvista.crear_boton()
-    
+objvista.crear_boton() 
 objmodelo = modelo_e ()
 objcontrolador = Controlador(objvista,objmodelo)
-    
+objvista.boton.config(command=objcontrolador.enviar_datos)    
 objvista.iniciar()
-
