@@ -42,14 +42,17 @@ class VistaFormulario:
 
     def crear_boton(self):
         self.boton = tk.Button(self.contenedor, text="Enviar datos")
-        self.boton.pack()
+        self.boton.pack(pady=10)
+    
+    def crear_boton2(self):
+        self.boton_borrar = tk.Button(self.contenedor, text="Eliminar datos", command=self.borrar_datos)
+        self.boton_borrar.pack(pady=10)
 
     def mostrar_mensaje(self, mensaje, tipo="info"):
        if tipo == "info": 
             messagebox.showinfo("Información", f"{mensaje}")
        elif tipo == "error":
            messagebox.showerror("Error", f"{mensaje}")
-
 
     def obtener_datos(self):
         return {
@@ -59,6 +62,13 @@ class VistaFormulario:
             "Correo electronico": self.entry_correo.get(),
             "Genero": self.entry_genero.get()
         }
+
+    def borrar_datos(self):
+        self.entry_nombre.delete(0, tk.END)
+        self.entry_apellido.delete(0, tk.END)
+        self.entry_edad.delete(0, tk.END)
+        self.entry_correo.delete(0,tk.END)
+        self.entry_genero.delete(0, tk.END)
 
     def iniciar(self):
         self.ventana.mainloop()

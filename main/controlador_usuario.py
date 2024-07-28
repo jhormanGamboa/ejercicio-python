@@ -2,27 +2,27 @@ from vista_formulario import VistaFormulario
 from modelo import modelo_e
 class Controlador:
     def __init__(self, objvista, objmodelo):
-        self.vista = objvista
-        self.modelo = objmodelo
+        self.objvista = objvista
+        self.objmodelo = objmodelo
 
     def enviar_datos(self):
-        datos = objvista.obtener_datos()
+        datos = self.objvista.obtener_datos()
 
         # aco estoy validadndo la eda de que sea un numero entero
         if not self.validar_edad(datos["Edad"]):
-            objvista.mostrar_mensaje("Error" " " "Rellena los campos correctamente")
+            self.objvista.mostrar_mensaje("Error" " " "Rellena los campos correctamente")
             return
         
         # aca estoy actualizando los datos
-        objmodelo.set_nombre(datos["Nombre"])
-        objmodelo.set_apellido(datos["Apellido"])
-        objmodelo.set_edad(datos["Edad"])
-        objmodelo.set_correo(datos["Correo electronico"])
-        objmodelo.set_genero(datos["Genero"])
+        self.objmodelo.set_nombre(datos["Nombre"])
+        self.objmodelo.set_apellido(datos["Apellido"])
+        self.objmodelo.set_edad(datos["Edad"])
+        self.objmodelo.set_correo(datos["Correo electronico"])
+        self.objmodelo.set_genero(datos["Genero"])
         
         # aqui guardo los datos que envio
-        objmodelo.archvonuevo(datos)
-        objvista.mostrar_mensaje("Informacion" " ""Datos enviados correctamente")
+        self.objmodelo.archvonuevo(datos)
+        self.objvista.mostrar_mensaje("Informacion" " ""Datos enviados correctamente")
 
     def validar_edad(self, edad_texto):
         try:
@@ -34,9 +34,11 @@ class Controlador:
         
 
 objvista = VistaFormulario()
-objvista.crear_ventana()
-objvista.crear_boton() 
 objmodelo = modelo_e ()
 objcontrolador = Controlador(objvista,objmodelo)
+objvista.crear_ventana()
+objvista.crear_boton() 
+objvista.crear_boton2()
 objvista.boton.config(command=objcontrolador.enviar_datos)    
+objvista.boton_borrar.config(command=objvista.borrar_datos)
 objvista.iniciar()
