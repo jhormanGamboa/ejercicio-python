@@ -1,3 +1,4 @@
+import json
 from vista_formulario import VistaFormulario
 from modelo import modelo_e
 class Controlador:
@@ -21,7 +22,7 @@ class Controlador:
         self.objmodelo.set_genero(datos["Genero"])
         
         # aqui guardo los datos que envio
-        self.objmodelo.archvonuevo(datos)
+        self.archvonuevo(datos)
         self.objvista.mostrar_mensaje("Informacion" " ""Datos enviados correctamente")
 
     def validar_edad(self, edad_texto):
@@ -30,6 +31,10 @@ class Controlador:
             return True
         except ValueError:
             return False
+    def archvonuevo(self, datos):
+        with open("archivo.txt", "a") as archivo:
+            json.dump(datos, archivo)  
+            archivo.write("\n")         
         
         
 

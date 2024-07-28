@@ -42,7 +42,4 @@ class modelo_e:
        auxdato= archivo.readlines()
        return [json.loads(linea.strip()) for linea in auxdato]
 
-    def archvonuevo(self, datos):
-        with open("archivo.txt", "a") as archivo:
-            json.dump(datos, archivo)  
-            archivo.write("\n")     
+    

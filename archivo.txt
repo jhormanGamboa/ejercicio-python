@@ -1,0 +1,2 @@
+{"Nombre": "jesus", "Apellido": "calvo", "Edad": "20", "Correo electronico": "jesushs", "Genero": "20"}
+{"Nombre": "jsjakjaa", "Apellido": "aksjkasjd", "Edad": "30", "Correo electronico": "askjaksas", "Genero": "masculino"}
