@@ -22,7 +22,7 @@ class Controlador:
         self.objmodelo.set_genero(datos["Genero"])
         
         # aqui guardo los datos que envio
-        self.archvonuevo(datos)
+        self.objmodelo.guardar_archivo()
         self.objvista.mostrar_mensaje("Informacion" " ""Datos enviados correctamente")
 
     def validar_edad(self, edad_texto):
@@ -37,10 +37,7 @@ class Controlador:
        auxdato= archivo.readlines()
        return [json.loads(linea.strip()) for linea in auxdato]
     
-    def archvonuevo(self, datos):
-        with open("archivo.txt", "a") as archivo:
-            json.dump(datos, archivo)  
-            archivo.write("\n")   
+    
 
 
         

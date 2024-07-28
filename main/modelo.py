@@ -36,6 +36,13 @@ class modelo_e:
 
     def set_genero(self,datogenero):
        self.genero = datogenero
-
+    
+    def formato_texto(self):
+       return f"{self.get_nombre()}, {self.get_apellido()}, {self.get_edad()}, {self.get_correo()}, {self.get_genero()}"
+                   
+    def guardar_archivo(self,archivo="archivo.txt"):
+       datos = self.formato_texto()
+       with open(archivo,"a") as linea:
+          linea.write(datos + "\n")
     
     
