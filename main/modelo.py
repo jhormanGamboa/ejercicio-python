@@ -1,4 +1,4 @@
-import json
+
 class modelo_e:
     def __init__(self):
         self.nombre = None
@@ -37,9 +37,5 @@ class modelo_e:
     def set_genero(self,datogenero):
        self.genero = datogenero
 
-    def procesojson(self):
-      with open("archivo.txt","r") as archivo:
-       auxdato= archivo.readlines()
-       return [json.loads(linea.strip()) for linea in auxdato]
-
+    
     

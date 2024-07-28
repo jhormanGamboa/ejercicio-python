@@ -31,10 +31,18 @@ class Controlador:
             return True
         except ValueError:
             return False
+        
+    def procesojson(self):
+      with open("archivo.txt","r") as archivo:
+       auxdato= archivo.readlines()
+       return [json.loads(linea.strip()) for linea in auxdato]
+    
     def archvonuevo(self, datos):
         with open("archivo.txt", "a") as archivo:
             json.dump(datos, archivo)  
-            archivo.write("\n")         
+            archivo.write("\n")   
+
+
         
         
 
